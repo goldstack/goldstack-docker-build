@@ -38,3 +38,5 @@ RUN apt update && apt install yarn
 RUN echo "yarn installed successfully"
 RUN yarn -v
 RUN rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
