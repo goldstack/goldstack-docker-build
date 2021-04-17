@@ -1,12 +1,23 @@
 FROM ubuntu:20.04
 
-# Installing Terraform
+# Install shared tools
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
     curl \
   && rm -rf /var/lib/apt/lists/*
 
+# Install go
+RUN wget --quiet https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
+RUN rm -rf go1.16.3.linux-amd64.tar.gz
+# RUN echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
+ENV PATH /usr/local/go/bin:$PATH
+# RUN cat ~/.bashrc
+# RUN /bin/bash -l
+RUN go version
+
+# Installing Terraform
 RUN wget --quiet https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip \
   && unzip *.zip \
   && mv terraform /usr/bin \
@@ -38,5 +49,6 @@ RUN apt update && apt install yarn
 RUN echo "yarn installed successfully"
 RUN yarn -v
 RUN rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /app
