@@ -11,10 +11,7 @@ RUN apt-get update && apt-get install -y \
 RUN wget --quiet https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
 RUN rm -rf go1.16.3.linux-amd64.tar.gz
-# RUN echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
 ENV PATH /usr/local/go/bin:$PATH
-# RUN cat ~/.bashrc
-# RUN /bin/bash -l
 RUN go version
 
 # Installing Terraform
