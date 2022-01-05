@@ -15,7 +15,7 @@ ENV PATH /usr/local/go/bin:$PATH
 RUN go version
 
 # Installing Terraform
-RUN wget --quiet https://releases.hashicorp.com/terraform/1.0.1/terraform_1.0.1_linux_amd64.zip \
+RUN wget --quiet https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip \
   && unzip *.zip \
   && mv terraform /usr/bin \
   && rm *.zip
